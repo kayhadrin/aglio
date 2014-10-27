@@ -51,6 +51,10 @@ exports.run = (argv=parser.argv, done=->) ->
                     livePreview: true
 
             fs.readFile argv.i, "utf-8", (err, blueprint) ->
+                if err
+                    console.error "Failed to read " + argv.i + '\n', err
+                    return cb?(err)
+
                 console.log "Rendering " + argv.i
                 aglio.render blueprint, options, (err, html, warnings) ->
                     logWarnings warnings
