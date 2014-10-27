@@ -52,7 +52,7 @@ exports.run = (argv=parser.argv, done=->) ->
 
             fs.readFile argv.i, "utf-8", (err, blueprint) ->
                 if err
-                    console.error "Failed to read " + argv.i + '\n', err
+                    console.error "Failed to read " + argv.i + '\nRead error was:\n', err
                     return cb?(err)
 
                 console.log "Rendering " + argv.i
